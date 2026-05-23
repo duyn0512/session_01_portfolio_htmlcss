@@ -36,3 +36,36 @@
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
+
+.project-nav-wrapper {
+  padding: 3rem 0;
+  background-color: #ffffff;
+}
+
+.next-project-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  color: var(--green-deep);
+  transition: opacity 0.2s ease;
+}
+
+.next-project-link .next-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.next-project-link .next-arrow {
+  color: var(--green-deep);
+  transition: transform 0.2s ease;
+}
+
+.next-project-link:hover {
+  opacity: 0.75;
+}
+
+.next-project-link:hover .next-arrow {
+  transform: translateX(4px);
+}
