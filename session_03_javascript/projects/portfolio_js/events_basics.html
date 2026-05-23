@@ -40,6 +40,9 @@
 <body>
     <h1>🖱️ Click Events</h1>
 
+    /*
+        Bài 0C.1 - Click Event cơ bản
+    */
     <!-- Phần 1: Đổi màu nền -->
     <h2>Bài 1: Đổi màu nền</h2>
     <button class="btn btn-blue" id="btn-blue">Xanh dương</button>
@@ -112,6 +115,9 @@
         }
     </script>
 
+    /*
+        Bài 0C.2 - Input Event
+    */
     <h2>Bài 4: Tìm kiếm realtime</h2>
     <input
         type="text"
@@ -175,5 +181,95 @@
         });
     </script>
 
+    /*
+        Bài 0C.3 - Keyboard Event
+    */
+    <h2>Bài 7: Phím tắt</h2>
+    <p>Nhấn phím bất kỳ để xem thông tin:</p>
+    <div id="key-display" style="font-size:2rem; font-weight:700; padding:1rem; background:#f1f5f9; border-radius:8px; text-align:center;">
+        Chờ bạn nhấn phím...
+    </div>
+    <p style="margin-top:0.5rem; color:#64748b;">
+        Thử: Enter, Escape, Space, mũi tên...
+    </p>
+
+    <h2>Bài 8: Nhập liệu nâng cao</h2>
+    <input
+        type="text"
+        id="special-input"
+        placeholder="Nhập và nhấn Enter..."
+        style="padding:0.75rem; width:300px; border:2px solid #e2e8f0; border-radius:8px; font-size:1rem;"
+    >
+    <div id="tag-list" style="margin-top:0.5rem; display:flex; flex-wrap:wrap; gap:0.5rem;"></div>
+
+    <script>
+        const keyDisplay = document.getElementById('key-display');
+
+        document.addEventListener('keydown', (e) => {
+            keyDisplay.innerHTML = `
+                <span style="color:#3b82f6;">Key:</span> "${e.key}" &nbsp;|&nbsp;
+                <span style="color:#22c55e;">Code:</span> "${e.code}" &nbsp;|&nbsp;
+                <span style="color:#f59e0b;">Shift:</span> ${e.shiftKey} &nbsp;|&nbsp;
+                <span style="color:#ef4444;">Ctrl:</span> ${e.ctrlKey}
+            `;
+        });
+
+        // ===== BÀI 8: TAG INPUT (nhập + Enter) =====
+        const specialInput = document.getElementById('special-input');
+        const tagList = document.getElementById('tag-list');
+        let tags = [];
+
+        specialInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                const value = specialInput.value.trim();
+
+                if (value === '') return;
+                if (tags.includes(value)) {
+                    alert('Tag này đã tồn tại!');
+                    return;
+                }
+
+                tags.push(value);
+                renderTags();
+                specialInput.value = '';
+            }
+
+            if (e.key === 'Backspace' && specialInput.value === '' && tags.length > 0) {
+                tags.pop();
+                renderTags();
+            }
+        });
+
+        function renderTags() {
+            tagList.innerHTML = tags.map((tag, index) => `
+                <span style="
+                    background:#dbeafe;
+                    padding:0.3rem 0.8rem;
+                    border-radius:999px;
+                    font-size:0.85rem;
+                    display:flex;
+                    align-items:center;
+                    gap:0.3rem;
+                ">
+                    ${tag}
+                    <button onclick="removeTag(${index})" style="
+                        border:none;
+                        background:transparent;
+                        cursor:pointer;
+                        font-size:1rem;
+                        color:#3b82f6;
+                    ">&times;</button>
+                </span>
+            `).join('');
+        }
+
+        function removeTag(index) {
+            tags.splice(index, 1);
+            renderTags();
+        }
+    </script>
+
+    
 </body>
 </html>
