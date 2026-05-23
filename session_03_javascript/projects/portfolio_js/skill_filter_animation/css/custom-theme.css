@@ -221,3 +221,52 @@ a:hover { color: var(--accent); }
   color: var(--green-deep);
   margin: 0;
 }
+
+.filter-btn {
+    padding: 8px 24px;
+    border: 2px solid #e2e8f0;
+    background: white;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 500;
+    font-family: 'Inter', sans-serif;
+    color: #4a5568;
+    transition: all 0.3s ease;
+}
+
+.filter-btn:hover {
+    border-color: #1f4a32; 
+    color: #1f4a32;
+}
+
+
+.filter-btn.active {
+    background: #1f4a32;
+    border-color: #1f4a32;
+    color: white;
+}
+
+.work-grid {
+    position: relative;
+    transition: height 0.4s ease;
+}
+
+.portfolio-item {
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    transform-origin: center;
+}
+
+.portfolio-item.show {
+    opacity: 1;
+    transform: scale(1);
+    pointer-events: auto;
+}
+
+.portfolio-item.hide {
+    opacity: 0;
+    transform: scale(0.8);
+
+    position: absolute;
+    pointer-events: none;
+    visibility: hidden; 
+}
