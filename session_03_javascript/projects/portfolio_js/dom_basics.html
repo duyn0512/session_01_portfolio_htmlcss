@@ -229,6 +229,64 @@
             );
         });
 
+        /*Bài 0B.7 - Tạo & Xoá phần tử*/
+        console.log("\n BÀI 0B.7: TẠO & XOÁ PHẦN TỬ\n\n");
+
+        const newItem = document.createElement('li');
+        newItem.textContent = 'React';
+        newItem.classList.add('item');
+
+        const danhSach = document.getElementById('danh-sach');
+
+        danhSach.appendChild(newItem);
+
+        const firstNewItem = document.createElement('li');
+        firstNewItem.textContent = 'Git';
+        firstNewItem.classList.add('item');
+        danhSach.prepend(firstNewItem);
+
+        const refItem = danhSach.children[2]; 
+        const midItem = document.createElement('li');
+        midItem.textContent = 'TypeScript';
+        midItem.classList.add('item');
+        danhSach.insertBefore(midItem, refItem);
+
+        danhSach.removeChild(danhSach.lastChild); 
+        newItem.remove(); 
+        const oldItem = danhSach.children[0];
+        const replacement = document.createElement('li');
+        replacement.textContent = 'HTML5 (updated)';
+        replacement.classList.add('item');
+        danhSach.replaceChild(replacement, oldItem);
+
+        /*
+            Bài tập con 0B.7 - Danh sách động
+        */
+        console.log("\n Bài tập con 0B.7 - Danh sách động\n\n");
+
+        function themMonHoc(tenMon) {
+
+            const newItem = document.createElement('li');
+
+            newItem.classList.add('item');
+
+            newItem.textContent = tenMon;
+
+            const danhSach = document.getElementById('danh-sach');
+
+            danhSach.appendChild(newItem);
+
+            console.log(`Đã thêm môn học: ${tenMon}`);
+        }
+
+        themMonHoc("Vue.js");
+        themMonHoc("Node.js");
+
+        document.querySelectorAll('#danh-sach li')
+            .forEach((item, index) => {
+                console.log(`Item ${index}: ${item.textContent}`);
+            });
+
 
     </script>
 </body>
