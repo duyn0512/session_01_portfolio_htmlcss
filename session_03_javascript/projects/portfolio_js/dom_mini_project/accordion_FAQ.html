@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Accordion FAQ</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #f1f5f9;
+            padding: 2rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        h1 { text-align: center; color: #334155; }
+        .accordion { margin-top: 1.5rem; }
+        .accordion-item {
+            background: white;
+            border-radius: 12px;
+            margin-bottom: 0.75rem;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+        }
+        .accordion-header {
+            padding: 1rem 1.25rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: #334155;
+            transition: background 0.2s;
+        }
+        .accordion-header:hover { background: #f8fafc; }
+        .accordion-header .icon {
+            font-size: 1.25rem;
+            transition: transform 0.3s;
+        }
+        .accordion-item.active .accordion-header .icon {
+            transform: rotate(45deg);
+        }
+        .accordion-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            padding: 0 1.25rem;
+            color: #64748b;
+            line-height: 1.6;
+        }
+        .accordion-item.active .accordion-body {
+            max-height: 200px;
+            padding: 0 1.25rem 1.25rem;
+        }
+        .accordion-item.active .accordion-header {
+            color: #6366f1;
+        }
+    </style>
+</head>
+<body>
+    <h1>❓ Câu hỏi thường gặp</h1>
+
+    <div class="accordion" id="accordion">
+        <div class="accordion-item">
+            <div class="accordion-header">
+                JavaScript là gì?
+                <span class="icon">+</span>
+            </div>
+            <div class="accordion-body">
+                JavaScript là ngôn ngữ lập trình phổ biến nhất thế giới, chạy trên trình duyệt web.
+                Được tạo ra bởi Brendan Eich năm 1995, JavaScript cho phép tạo trang web tương tác,
+                ứng dụng web, server (Node.js), và nhiều hơn nữa.
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <div class="accordion-header">
+                DOM là gì?
+                <span class="icon">+</span>
+            </div>
+            <div class="accordion-body">
+                DOM (Document Object Model) là cách trình duyệt biểu diễn trang HTML thành cây đối tượng.
+                JavaScript có thể truy cập, thay đổi, thêm, xóa phần tử trên trang thông qua DOM.
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <div class="accordion-header">
+                let, const, var khác nhau thế nào?
+                <span class="icon">+</span>
+            </div>
+            <div class="accordion-body">
+                <strong>let</strong> — biến có thể thay đổi giá trị, phạm vi block scope.<br>
+                <strong>const</strong> — hằng số, không thể gán lại, phạm vi block scope.<br>
+                <strong>var</strong> — cách cũ, phạm vi function scope, có thể gây bug.<br>
+                Khuyến nghị: dùng <strong>const</strong> mặc định, <strong>let</strong> khi cần thay đổi.
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <div class="accordion-header">
+                addEventListener là gì?
+                <span class="icon">+</span>
+            </div>
+            <div class="accordion-body">
+                addEventListener là phương thức để "lắng nghe" sự kiện trên phần tử HTML.
+                Ví dụ: click, input, keydown, submit... Khi sự kiện xảy ra,
+                hàm callback sẽ được gọi để xử lý.
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <div class="accordion-header">
+                localStorage là gì?
+                <span class="icon">+</span>
+            </div>
+            <div class="accordion-body">
+                localStorage là nơi lưu dữ liệu trong trình duyệt, dữ liệu tồn tại ngay cả khi
+                đóng tab hoặc tắt trình duyệt. Chỉ lưu được string, nên dùng JSON.stringify()
+                và JSON.parse() để lưu object/array.
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const accordion = document.getElementById('accordion');
+
+        // Event Delegation — gắn 1 listener cho parent
+        accordion.addEventListener('click', (e) => {
+            const header = e.target.closest('.accordion-header');
+            if (!header) return;
+
+            const item = header.parentElement;
+            const isActive = item.classList.contains('active');
+
+            // Đóng tất cả
+            accordion.querySelectorAll('.accordion-item').forEach(i => {
+                i.classList.remove('active');
+            });
+
+            // Mở cái vừa click (nếu chưa mở)
+            if (!isActive) {
+                item.classList.add('active');
+            }
+        });
+    </script>
+</body>
+</html>
