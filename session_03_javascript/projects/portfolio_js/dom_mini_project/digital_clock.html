@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Digital Clock</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #0f172a;
+            color: #e2e8f0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .clock {
+            font-size: 6rem;
+            font-weight: 700;
+            font-family: 'Courier New', monospace;
+            letter-spacing: 4px;
+        }
+        .date {
+            font-size: 1.5rem;
+            color: #94a3b8;
+            margin-top: 0.5rem;
+        }
+        .seconds-bar {
+            width: 300px;
+            height: 6px;
+            background: #334155;
+            border-radius: 3px;
+            margin-top: 1rem;
+            overflow: hidden;
+        }
+        .seconds-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            border-radius: 3px;
+            transition: width 1s linear;
+        }
+        .greeting {
+            font-size: 1.25rem;
+            margin-top: 1.5rem;
+            padding: 0.5rem 1.5rem;
+            border-radius: 999px;
+        }
+    </style>
+</head>
+<body>
+    <div class="clock" id="clock">00:00:00</div>
+    <div class="date" id="date"></div>
+    <div class="seconds-bar">
+        <div class="seconds-fill" id="seconds-fill"></div>
+    </div>
+    <div class="greeting" id="greeting"></div>
+
+    <script>
+        const clockEl = document.getElementById('clock');
+        const dateEl = document.getElementById('date');
+        const secondsFill = document.getElementById('seconds-fill');
+        const greetingEl = document.getElementById('greeting');
+
+        function updateClock() {
+            const now = new Date();
+
+            // Giờ:phút:giây
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            clockEl.textContent = `${hours}:${minutes}:${seconds}`;
+
+            // Ngày tháng
+            const options = {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            };
+            dateEl.textContent = now.toLocaleDateString('vi-VN', options);
+
+            // Thanh giây
+            const progress = (now.getSeconds() / 59) * 100;
+            secondsFill.style.width = `${progress}%`;
+
+            // Lời chào theo giờ
+            const hour = now.getHours();
+            let greeting, color;
+            if (hour >= 5 && hour < 12) {
+                greeting = '🌅 Chào buổi sáng!';
+                color = '#fef3c7';
+            } else if (hour >= 12 && hour < 18) {
+                greeting = '☀️ Chào buổi chiều!';
+                color = '#dbeafe';
+            } else if (hour >= 18 && hour < 22) {
+                greeting = '🌇 Chào buổi tối!';
+                color = '#fce7f3';
+            } else {
+                greeting = '🌙 Khuya rồi, ngủ đi!';
+                color = '#1e293b';
+            }
+            greetingEl.textContent = greeting;
+            greetingEl.style.background = color;
+            greetingEl.style.color = hour >= 22 || hour < 5 ? '#e2e8f0' : '#1e293b';
+        }
+
+        // Cập nhật mỗi giây
+        updateClock();
+        setInterval(updateClock, 1000);
+    </script>
+</body>
+</html>
