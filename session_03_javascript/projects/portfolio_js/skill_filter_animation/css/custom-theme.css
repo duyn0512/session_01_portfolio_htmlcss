@@ -1,0 +1,223 @@
+:root {
+  --cream: #f1ead9;
+  --cream-deep: #ebe2cc;
+  --ink: #1f2a24;
+  --green: #1f4a32;
+  --green-deep: #143524;
+  --muted: #5a6660;
+  --accent: #d97a4a;
+  --card-bg: #ffffff;
+  --radius: 14px;
+  --shadow-sm: 0 2px 10px rgba(20, 30, 25, .06);
+  --shadow-md: 0 12px 32px rgba(20, 30, 25, .10);
+}
+
+* { box-sizing: border-box; }
+html, body {
+  background: #ffffff;
+  color: var(--ink);
+  font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, .serif {
+  font-family: 'Fraunces', Georgia, serif;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--green-deep);
+}
+
+a { color: var(--green-deep); }
+
+a:hover { color: var(--accent); }
+
+.site-nav {
+  background: var(--cream);
+  padding: 1rem 0;
+}
+
+.site-nav .nav-link {
+  color: var(--green-deep);
+  font-weight: 500;
+  position: relative;
+  padding: .25rem .25rem;
+}
+
+.site-nav .nav-link.active::after,
+.site-nav .nav-link:hover::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: -4px;
+  height: 2px;
+  background: var(--green-deep);
+  border-radius: 2px;
+}
+
+.brand-logo { padding: 0; }
+.logo-circle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 78px;
+  height: 78px;
+  background: var(--green-deep);
+  color: var(--cream);
+  border-radius: 50%;
+  font-family: 'Fraunces', serif;
+  font-weight: 600;
+  font-size: .95rem;
+  line-height: 1.05;
+  text-align: center;
+  text-decoration: none;
+}
+
+.hero {
+  position: relative;
+  padding: 4rem 1rem 10rem;
+  background: var(--cream);
+}
+
+.hero-title {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  margin-bottom: 1.25rem;
+}
+
+.hero-sub {
+  max-width: 640px;
+  margin: 0 auto;
+  color: var(--muted);
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+.hero-curve {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 80px;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-position: bottom center;
+  background-size: 100% 100%;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320' preserveAspectRatio='none'%3E%3Cpath fill='%23ffffff' d='M0,0 Q720,160 1440,0 L1440,320 L0,320 Z'%3E%3C/path%3E%3C/svg%3E");
+  border-radius: 0 !important;
+  transform: none !important;
+}
+
+.work-grid { margin-top: -1rem; }
+
+.work-card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  transition: transf
+  orm .35s ease;
+}
+.work-card:hover { transform: translateY(-4px); }
+
+.work-thumb {
+  background: #fff;
+  border-radius: var(--radius);
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow .35s ease;
+}
+
+.work-card:hover .work-thumb { box-shadow: var(--shadow-md); }
+
+.work-thumb img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform .6s ease;
+}
+
+.work-card:hover .work-thumb img { transform: scale(1.04); }
+.work-title {
+  margin-top: 1rem;
+  font-size: 1.15rem;
+  font-weight: 500;
+  color: var(--green-deep);
+}
+
+.btn-pill {
+  border-radius: 999px;
+  padding: .65rem 1.5rem;
+  font-weight: 500;
+}
+
+.btn-dark {
+  background: var(--green-deep);
+  border-color: var(--green-deep);
+}
+
+.btn-dark:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.site-footer {
+  background-color: var(--cream);
+  padding: 5rem 1rem 3rem;
+  text-align: center;           
+  color: var(--green-deep);
+  margin-top: 4rem;
+}
+
+.site-footer .contact-title {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 2.2rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+  color: var(--green-deep);
+}
+
+.site-footer .contact-email {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.15rem;
+  color: var(--green-deep);
+  text-decoration: underline;
+  display: inline-block;
+  margin-bottom: 2.5rem;
+  transition: color 0.2s ease;
+}
+
+.site-footer .contact-email:hover {
+  color: var(--accent);
+}
+
+.site-footer .footer-divider {
+  max-width: 600px;
+  margin: 0 auto 2rem;
+  border: 0;
+  border-top: 1px solid var(--ink);
+  opacity: 0.25; 
+}
+
+.site-footer .footer-links {
+  display: flex;
+  justify-content: center; 
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+}
+
+.site-footer .footer-links a {
+  color: var(--green-deep);
+  text-decoration: underline;
+  margin: 0; 
+}
+
+.site-footer .footer-links a:hover {
+  color: var(--accent);
+}
+
+.site-footer .copyright-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  color: var(--green-deep);
+  margin: 0;
+}
