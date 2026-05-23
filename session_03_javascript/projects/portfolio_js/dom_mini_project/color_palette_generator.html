@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Color Palette Generator</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 2rem;
+            text-align: center;
+        }
+        h1 { margin-bottom: 0.5rem; }
+        .hint { color: #94a3b8; margin-bottom: 2rem; }
+        .palette {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+        .color-card {
+            width: 150px;
+            height: 200px;
+            border-radius: 16px;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 1rem;
+            transition: transform 0.2s;
+            position: relative;
+        }
+        .color-card:hover { transform: translateY(-8px); }
+        .color-hex {
+            background: rgba(0,0,0,0.5);
+            color: white;
+            padding: 0.3rem 0.6rem;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 0.9rem;
+        }
+        .generate-btn {
+            padding: 0.75rem 2rem;
+            border: none;
+            background: #8b5cf6;
+            color: white;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .generate-btn:hover { background: #7c3aed; }
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #22c55e;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            display: none;
+            animation: fadeInUp 0.3s ease;
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translate(-50%, 20px); }
+            to { opacity: 1; transform: translate(-50%, 0); }
+        }
+    </style>
+</head>
+<body>
+    <h1>🎨 Color Palette Generator</h1>
+    <p class="hint">Click vào màu để copy mã hex</p>
+    <div class="palette" id="palette"></div>
+    <button class="generate-btn" id="generate-btn">🎲 Tạo bảng màu mới</button>
+    <div class="toast" id="toast">Đã copy!</div>
+
+    <script>
+        const palette = document.getElementById('palette');
+        const toast = document.getElementById('toast');
+
+        function randomHex() {
+            const hex = Math.floor(Math.random() * 16777215).toString(16);
+            return '#' + hex.padStart(6, '0');
+        }
+
+        function generatePalette() {
+            palette.innerHTML = '';
+
+            for (let i = 0; i < 5; i++) {
+                const color = randomHex();
+
+                const card = document.createElement('div');
+                card.className = 'color-card';
+                card.style.backgroundColor = color;
+                card.innerHTML = `<span class="color-hex">${color.toUpperCase()}</span>`;
+
+                card.addEventListener('click', () => {
+                    navigator.clipboard.writeText(color.toUpperCase());
+                    showToast(`Đã copy ${color.toUpperCase()}`);
+                });
+
+                palette.appendChild(card);
+            }
+        }
+
+        function showToast(message) {
+            toast.textContent = message;
+            toast.style.display = 'block';
+            setTimeout(() => toast.style.display = 'none', 2000);
+        }
+
+        document.getElementById('generate-btn').addEventListener('click', generatePalette);
+
+        generatePalette(); // Tạo lần đầu
+    </script>
+</body>
+</html>
