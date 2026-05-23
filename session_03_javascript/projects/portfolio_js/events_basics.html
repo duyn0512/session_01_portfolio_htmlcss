@@ -270,6 +270,80 @@
         }
     </script>
 
-    
+    /*
+        Bài 0C.4 - Form Event
+    */
+    <h2>Bài 9: Form đăng ký</h2>
+    <form id="register-form" style="max-width:400px;">
+        <div style="margin-bottom:0.75rem;">
+            <label>Họ tên:</label><br>
+            <input type="text" id="reg-name" required
+                style="width:100%; padding:0.5rem; border:1px solid #cbd5e1; border-radius:6px;">
+        </div>
+        <div style="margin-bottom:0.75rem;">
+            <label>Email:</label><br>
+            <input type="email" id="reg-email" required
+                style="width:100%; padding:0.5rem; border:1px solid #cbd5e1; border-radius:6px;">
+        </div>
+        <div style="margin-bottom:0.75rem;">
+            <label>Mật khẩu:</label><br>
+            <input type="password" id="reg-password" required minlength="6"
+                style="width:100%; padding:0.5rem; border:1px solid #cbd5e1; border-radius:6px;">
+        </div>
+        <button type="submit" class="btn btn-blue">Đăng ký</button>
+    </form>
+    <div id="form-result" style="margin-top:1rem;"></div>
+
+    <script>
+        // ===== BÀI 9: FORM SUBMIT =====
+        const form = document.getElementById('register-form');
+        const formResult = document.getElementById('form-result');
+
+        form.addEventListener('submit', (e) => {
+            // ⚠️ QUAN TRỌNG: Ngăn form reload trang
+            e.preventDefault();
+
+            // Lấy giá trị
+            const name = document.getElementById('reg-name').value.trim();
+            const email = document.getElementById('reg-email').value.trim();
+            const password = document.getElementById('reg-password').value;
+
+            // Validate đơn giản
+            if (name.length < 2) {
+                showFormError('Họ tên phải ít nhất 2 ký tự');
+                return;
+            }
+
+            if (!email.includes('@')) {
+                showFormError('Email không hợp lệ');
+                return;
+            }
+
+            if (password.length < 6) {
+                showFormError('Mật khẩu phải ít nhất 6 ký tự');
+                return;
+            }
+
+            // Thành công
+            formResult.innerHTML = `
+                <div style="background:#dcfce7; padding:1rem; border-radius:8px; border-left:4px solid #22c55e;">
+                    ✅ <strong>Đăng ký thành công!</strong><br>
+                    Họ tên: ${name}<br>
+                    Email: ${email}
+                </div>
+            `;
+
+            // Reset form
+            form.reset();
+        });
+
+        function showFormError(message) {
+            formResult.innerHTML = `
+                <div style="background:#fee2e2; padding:1rem; border-radius:8px; border-left:4px solid #ef4444;">
+                    ❌ ${message}
+                </div>
+            `;
+        }
+    </script>
 </body>
 </html>
