@@ -61,6 +61,40 @@
             console.log(`Item ${index}: ${item.textContent}`);
         });
 
+        /*Bài 0B.3 - Thay đổi nội dung*/
+        console.log("\n BÀI 0B.3: THAY ĐỔI NỘI DUNG\n\n");
+
+        title.textContent = "JavaScript thật tuyệt!";
+
+        title.innerHTML = "JavaScript <em>thật tuyệt</em>!";
+
+        const desc = document.querySelector('.description');
+
+        desc.textContent = "<b>In đậm</b>";
+
+        desc.innerHTML = "<b>In đậm</b>";
+
+        /*
+            Bài tập con 0B.3 - Thay đổi nội dung
+        */
+        console.log("\n Bài tập con 0B.3 - Thay đổi nội dung\n\n");
+
+        const title = document.getElementById('title');
+        title.textContent = "Nguyễn Văn A";
+
+        const firstP = document.querySelector('p');
+        firstP.textContent = "Tôi đang học DOM";
+
+        const firstLi = document.querySelector('li');
+        firstLi.innerHTML = "<strong>HTML5</strong>";
+
+        const allLi = document.querySelectorAll('li');
+
+        allLi.forEach((item) => {
+            item.textContent += " (đã học)";
+        });
+    
+
     </script>
 </body>
 </html>
