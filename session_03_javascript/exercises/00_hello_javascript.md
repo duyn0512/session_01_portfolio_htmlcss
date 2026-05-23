@@ -18,8 +18,7 @@
 
 ## 🪜 Bài tập chi tiết
 
-### Bài 0.1 — Chào thế giới (5 phút)
-
+### Bài 0.1 — Chào thế giới (5)
 **Yêu cầu:** Tạo file HTML đầu tiên có JavaScript.
 
 **Bước 1:** Tạo file `hello.html`:
@@ -225,7 +224,7 @@ console.log(`${a} ** ${b} =`, a ** b);  // 50625 (lũy thừa)
 let x = 10;
 x += 5;   // x = x + 5 → 15
 x -= 3;   // x = x - 3 → 12
-x *= 2;   // x = x * 2 → 24
+x *= 2;   // x = x * 2 → 24T
 x /= 4;   // x = x / 4 → 6
 console.log("x =", x);  // 6
 

@@ -159,8 +159,6 @@ desc.innerHTML = "<b>In đậm</b>";
 **Yêu cầu:** Thêm/sửa/xóa thuộc tính HTML.
 
 ```javascript
-const title = document.getElementById('title');
-
 // ===== getAttribute — lấy giá trị thuộc tính =====
 console.log("ID:", title.getAttribute('id'));  // "title"
 console.log("Class:", title.getAttribute('class')); // null (chưa có class)
