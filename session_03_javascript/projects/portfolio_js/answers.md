@@ -41,4 +41,16 @@ Hai hàm này phục vụ hai mục đích hoàn toàn khác nhau trong JavaScri
 
 - Nếu sau này đổi tên biến `searchInput` thành tên khác, hoặc muốn gom nhiều ô input dùng chung một hàm xử lý, sẽ không cần phải sửa lại đoạn code lấy giá trị bên trong hàm nữa.
 
+### Bài 0C.5 — Event Delegation
+
+- Dùng cách này tối ưu hơn vì:
+    - Cách cũ-Gắn cho từng con: 
+        - Phải dùng `querySelector('Li')` rồi lặp qua từng phần tử để gắn sự kiện.
+        - Nếu danh sách có 1000 phần tử, trình duyệt phải quản lý 1000 hàm lắng nghe sự kiện.
+        - nếu bạn dùng JavaScript để bấm "Thêm dòng mới", dòng mới đó sẽ không có sự kiện click và bạn phải mất công viết code gán lại.
+    - Cách mới(Uỷ quyền-Delegation):
+        - Bạn chỉ tạo đúng 1 sự kiện ở thẻ `<ul>`. Khi bạn click vào bất kỳ thẻ `<li>` nào, nhờ cơ chế nổi bọt (Event Bubbling), sự kiện sẽ tự động bay lên thẻ `<ul>` và kích hoạt hàm xử lý.
+        - Sau này bạn có thêm bao nhiêu `<li>` mới vào đi chăng nữa, chúng vẫn hoạt động bình thường mà không cần viết thêm một dòng code nào.
+
+    
 
