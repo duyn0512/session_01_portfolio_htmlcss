@@ -16,11 +16,51 @@
 
     <script>
         /*Bài 0B.1 - DOM là gì?*/
+        console.log("\n BÀI 0B.1: DOM LÀ GÌ?\n\n");
         console.log("Document:", document);
         console.log("Title:", document.title);
         console.log("Body:", document.body);
-
         
+        /*Bài 0B.2 - Chọn phần tử*/
+        console.log("\n BÀI 0B.2: CHỌN PHẦN TỬ\n\n");
+
+        const title = document.getElementById('title');
+        console.log("getElementById:", title);
+        console.log("Nội dung:", title.textContent);
+
+        const firstDesc = document.querySelector('.description');
+        console.log("querySelector:", firstDesc.textContent);
+
+        const firstItem = document.querySelector('#danh-sach li');
+        console.log("Selector phức tạp:", firstItem.textContent); 
+
+        const allItems = document.querySelectorAll('.item');
+        console.log("querySelectorAll:", allItems);      
+        console.log("Số phần tử:", allItems.length);     
+
+        allItems.forEach((item, index) => {
+            console.log(`Item ${index}: ${item.textContent}`);
+        });
+
+        /*
+            Bài tập con 0B.2 - Chọn phần tử
+        */
+        console.log("\n Bài tập con 0B.2 - Chọn phần tử\n\n");
+
+        console.log(title);
+        console.log(title.textContent);
+
+        const firstParagraph = document.querySelector('p');
+        console.log(firstParagraph);
+        console.log(firstParagraph.textContent);
+
+        const allListItems = document.querySelectorAll('li');
+        console.log(allListItems);
+
+        allListItems.forEach((item, index) => {
+            console.log(`Item ${index}: ${item.textContent}`);
+        });
+
     </script>
 </body>
 </html>
