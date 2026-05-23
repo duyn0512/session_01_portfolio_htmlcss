@@ -314,6 +314,76 @@
         hoSo.email = "dyn05122006@gmail.com";
         console.log("Hồ sơ sau khi thêm email:", hoSo);
 
+        /*Bài 0.9 - Hàm cơ bản */
+        console.log("\nBÀI 0.9: HÀM CƠ BẢN\n\n")
+
+        function chaoHoi(ten) {
+            return `Xin chào, ${ten}! Chào mừng đến với JavaScript!`;
+        }
+
+        console.log(chaoHoi("Minh"));
+        console.log(chaoHoi("Lan"));
+
+        function tinhTong(a, b) {
+            return a + b;
+        }
+
+        function tinhDTChuNhat(dai, rong) {
+            return dai * rong;
+        }
+
+        console.log("Tổng:", tinhTong(10, 20));           
+        console.log("Diện tích:", tinhDTChuNhat(5, 3));  
+
+        function tinhDiemTB(diem1, diem2, diem3, heSo = 1) {
+            return (diem1 + diem2 + diem3) / 3 * heSo;
+        }
+
+        console.log("Điểm TB:", tinhDiemTB(8, 7, 9));      
+        console.log("Điểm TB x1.1:", tinhDiemTB(8, 7, 9, 1.1)); 
+
+        const binhPhuong = (so) => so * so;
+        const laChan = (so) => so % 2 === 0;
+
+        console.log("5² =", binhPhuong(5));       
+        console.log("4 chẵn?", laChan(4));        
+        console.log("7 chẵn?", laChan(7));        
+
+        /*
+            Bài tập con 0.9 - Hàm cơ bản
+        */
+        console.log("\n Bài tập con 0.9 - Hàm cơ bản\n\n")
+
+        function maxHaiSo(a, b) {
+            return a > b ? a : b;
+        }
+
+        console.log("Số lớn hơn:", maxHaiSo(10, 25)); // 25
+
+
+        function laNamNhuan(nam) {
+            return (nam % 4 === 0 && nam % 100 !== 0) || (nam % 400 === 0);
+        }
+
+        console.log("2024 là năm nhuận?", laNamNhuan(2024)); // true
+        console.log("2023 là năm nhuận?", laNamNhuan(2023)); // false
+
+
+        function gioiThieu(hoTen, tuoi, nganh) {
+            return `Tôi là ${hoTen}, ${tuoi} tuổi, học ${nganh}`;
+        }
+
+        console.log(gioiThieu("Nguyễn Văn A", 20, "Công nghệ thông tin"));
+
+
+        function tinhGiaBan(giaGoc, giamGia = 0) {
+            return giaGoc - (giaGoc * giamGia / 100);
+        }
+
+        console.log("Giá sau giảm:", tinhGiaBan(100000, 10)); // 90000
+        console.log("Không giảm:", tinhGiaBan(50000));        // 50000
+
+
     </script> 
 
 </body>
