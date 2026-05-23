@@ -65,36 +65,80 @@
         console.log("\n BÀI 0B.3: THAY ĐỔI NỘI DUNG\n\n");
 
         title.textContent = "JavaScript thật tuyệt!";
+        console.log("Sau khi đổi textContent:", title.textContent);
 
         title.innerHTML = "JavaScript <em>thật tuyệt</em>!";
+        console.log("Sau khi đổi innerHTML:", title.innerHTML);
 
         const desc = document.querySelector('.description');
 
         desc.textContent = "<b>In đậm</b>";
+        console.log("desc textContent:", desc.textContent);
 
         desc.innerHTML = "<b>In đậm</b>";
+        console.log("desc innerHTML:", desc.innerHTML);
 
         /*
             Bài tập con 0B.3 - Thay đổi nội dung
         */
         console.log("\n Bài tập con 0B.3 - Thay đổi nội dung\n\n");
 
-        const title = document.getElementById('title');
-        title.textContent = "Nguyễn Văn A";
+        title.textContent = "Trần Mai Ngọc Dung";
+        console.log("Tên mới:", title.textContent);
 
         const firstP = document.querySelector('p');
         firstP.textContent = "Tôi đang học DOM";
+        console.log("Đoạn văn mới:", firstP.textContent);
 
         const firstLi = document.querySelector('li');
         firstLi.innerHTML = "<strong>HTML5</strong>";
+        console.log("Li đầu tiên mới:", firstLi.innerHTML);
 
         const allLi = document.querySelectorAll('li');
 
         allLi.forEach((item) => {
             item.textContent += " (đã học)";
         });
-    
 
+        allLi.forEach((item, index) =>{
+            console.log(`Li ${index} sau khi sửa:`, item.textContent);
+        });
+    
+        /*Bài 0B.4 - Thay đổi thuộc tính*/
+        console.log("\n BÀI 0B.4: THAY ĐỔI THUỘC TÍNH\n\n")
+
+        console.log("ID:", title.getAttribute('id'));  
+        console.log("Class:", title.getAttribute('class')); 
+
+        title.setAttribute('class', 'main-title');
+        title.setAttribute('data-info', 'Thông tin tùy ý');
+
+        title.removeAttribute('data-info');
+
+        console.log(title.id);    
+        console.log(title.className); 
+
+        /*
+            Bài tập con 0B.4 - Thay đổi thuộc tính
+        */
+        console.log("\n Bài tập con 0B.4 - Thay đổi thuộc tính\n\n");
+
+        allLi.forEach((item) => {
+            item.setAttribute('class', 'highlight');
+        });
+        console.log("Đã thêm class highlight");
+
+        allLi.forEach((item, index) => {
+            item.setAttribute('data-index', index);
+        });
+        console.log("Đã thêm data-index");
+
+        allLi.forEach((item)=> {
+            console.log(item)
+        });
+
+        document.title = "DOM Practice";
+        console.log("Title mới:", document.title);
     </script>
 </body>
 </html>
