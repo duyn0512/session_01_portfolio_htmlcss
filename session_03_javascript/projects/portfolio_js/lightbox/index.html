@@ -59,30 +59,31 @@
     <div class="row g-4 work-grid">
       
       <div class="portfolio-item show col-md-6 col-lg-4" data-category="system">
-        <a href="dormitory-management.html" class="work-card">
+        <div class="work-card lightbox-trigger" data-index="0" style="cursor: pointer;">
           <div class="work-thumb">
             <img src="images/dormitory-management-system.jpg" alt="Dormitory Management System" />
           </div>
-        </a>
+        </div>
       </div>
 
       <div class="portfolio-item show col-md-6 col-lg-4" data-category="design">
-        <a href="green-campus.html" class="work-card">
+        <div class="work-card lightbox-trigger" data-index="1" style="cursor: pointer;">
           <div class="work-thumb">
             <img src="images/green-campus.jpg" alt="Green Campus System Diagram" />
           </div>
-        </a>
+        </div>
       </div>
 
       <div class="portfolio-item show col-md-6 col-lg-4" data-category="web">
-        <a href="coffee-management.html" class="work-card">
+        <div class="work-card lightbox-trigger" data-index="2" style="cursor: pointer;">
           <div class="work-thumb">
             <img src="images/coffee-management.jpg" alt="Coffee Management System" />
           </div>
-        </a>
+        </div>
       </div>
 
     </div>
+    
   </main>
   
   <footer class="site-footer">
@@ -102,8 +103,29 @@
     </div>
   </footer>
 
-  <script src="js/bootstrap.bundle.min.js"></script>
-  >   <script src="js/portfolio-filter.js"></script>
+  <div id="lightbox" class="lightbox-overlay">
+    <button class="lightbox-close">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+    </button>
+    <button class="lightbox-prev">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+    </button>
+    <button class="lightbox-next">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+    </button>
+    
+    <div class="lightbox-content-wrapper">
+      <img id="lightbox-img" class="lightbox-image" src="" alt="">
+      <div class="lightbox-caption">
+          <h3 id="lightbox-title">Project Title</h3>
+          <a id="lightbox-link" href="#" class="btn-view-details">Xem chi tiết dự án &rarr;</a>
+          <span class="keyboard-hint">Press <strong>ESC</strong> to close</span>
+      </div>
+    </div>
+  </div>
 
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/portfolio-filter.js"></script>
+  <script src="js/lightbox.js"></script>
 </body>
 </html>
