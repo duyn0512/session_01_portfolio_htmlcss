@@ -189,6 +189,46 @@
             console.log(`Li ${index}:`, item.className);
         });
         
+        /*Bài 0B.6 - Thay đổi Style(Inline)*/
+        console.log("\nBÀI 0B.6: THAY ĐỔI STYLE(INLINE)\n\n");
+
+        title.style.color = 'blue';
+        title.style.fontSize = '2rem';
+        title.style.backgroundColor = '#f0f0f0';
+        title.style.padding = '1rem';
+        title.style.borderRadius = '8px';
+
+        const currentColor = title.style.color;
+        console.log("Màu hiện tại:", currentColor); 
+
+        title.style.color = '';
+        
+        /*
+            Bài tập con 0B.6 - Thay đổi Style(Inline)
+        */
+        console.log("\n Bài tập con 0B.6 - Thay đổi Style(Inline)\n\n");
+
+        allLi.forEach((item, index) => {
+            if (index % 2 === 0) {
+                item.style.backgroundColor = '#dbeafe';
+            }
+            else {
+                item.style.backgroundColor = '#fce7f3';
+            }
+            item.style.fontSize = `${(index + 1) * 14}px`;
+
+            item.style.padding = '10px';
+
+            console.log(
+                `Li ${index}:`,
+                item.textContent,
+                "| Background:",
+                item.style.backgroundColor,
+                "| Font size:",
+                item.style.fontSize
+            );
+        });
+
 
     </script>
 </body>
