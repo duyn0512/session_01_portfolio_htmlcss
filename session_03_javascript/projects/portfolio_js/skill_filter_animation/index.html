@@ -48,15 +48,25 @@
   </header>
 
   <main class="container-xxl px-3 px-lg-5 py-5">
+    
+    <div class="filter-buttons d-flex justify-content-center gap-3 mb-5">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="web">Web Development</button>
+      <button class="filter-btn" data-filter="design">UI/UX Design</button>
+      <button class="filter-btn" data-filter="system">System Design</button>
+    </div>
+
     <div class="row g-4 work-grid">
-      <div class="col-md-6 col-lg-4">
+      
+      <div class="portfolio-item show col-md-6 col-lg-4" data-category="system">
         <a href="dormitory-management.html" class="work-card">
           <div class="work-thumb">
             <img src="images/dormitory-management-system.jpg" alt="Dormitory Management System" />
           </div>
         </a>
       </div>
-      <div class="col-md-6 col-lg-4">
+
+      <div class="portfolio-item show col-md-6 col-lg-4" data-category="design">
         <a href="green-campus.html" class="work-card">
           <div class="work-thumb">
             <img src="images/green-campus.jpg" alt="Green Campus System Diagram" />
@@ -64,13 +74,14 @@
         </a>
       </div>
 
-      <div class="col-md-6 col-lg-4">
+      <div class="portfolio-item show col-md-6 col-lg-4" data-category="web">
         <a href="coffee-management.html" class="work-card">
           <div class="work-thumb">
             <img src="images/coffee-management.jpg" alt="Coffee Management System" />
           </div>
         </a>
       </div>
+
     </div>
   </main>
   
@@ -92,5 +103,7 @@
   </footer>
 
   <script src="js/bootstrap.bundle.min.js"></script>
+  >   <script src="js/portfolio-filter.js"></script>
+
 </body>
 </html>
