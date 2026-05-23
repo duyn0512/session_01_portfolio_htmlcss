@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Events Basics</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            padding: 2rem;
+            transition: background-color 0.3s;
+        }
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            margin: 0.5rem;
+            transition: all 0.2s;
+        }
+        .btn-blue { background: #3b82f6; color: white; }
+        .btn-green { background: #22c55e; color: white; }
+        .btn-red { background: #ef4444; color: white; }
+        .btn:hover { opacity: 0.85; transform: scale(1.02); }
+        #output {
+            margin-top: 1rem;
+            padding: 1rem;
+            background: #f1f5f9;
+            border-radius: 8px;
+            min-height: 50px;
+        }
+        .counter-display {
+            font-size: 3rem;
+            font-weight: 700;
+            text-align: center;
+            margin: 1rem 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>🖱️ Click Events</h1>
+
+    <!-- Phần 1: Đổi màu nền -->
+    <h2>Bài 1: Đổi màu nền</h2>
+    <button class="btn btn-blue" id="btn-blue">Xanh dương</button>
+    <button class="btn btn-green" id="btn-green">Xanh lá</button>
+    <button class="btn btn-red" id="btn-red">Đỏ</button>
+
+    <!-- Phần 2: Bộ đếm -->
+    <h2>Bài 2: Bộ đếm</h2>
+    <div class="counter-display" id="counter">0</div>
+    <button class="btn btn-green" id="btn-increase">+1 Tăng</button>
+    <button class="btn btn-red" id="btn-decrease">-1 Giảm</button>
+    <button class="btn btn-blue" id="btn-reset">↺ Reset</button>
+
+    <!-- Phần 3: Output -->
+    <h2>Bài 3: Nhật ký sự kiện</h2>
+    <div id="output">Chưa có sự kiện nào...</div>
+
+    <script>
+        // ===== BÀI 1: ĐỔI MÀU NỀN =====
+        const btnBlue = document.getElementById('btn-blue');
+        const btnGreen = document.getElementById('btn-green');
+        const btnRed = document.getElementById('btn-red');
+
+        btnBlue.addEventListener('click', () => {
+            document.body.style.backgroundColor = '#dbeafe';
+            logEvent('Đã chuyển sang màu xanh dương');
+        });
+
+        btnGreen.addEventListener('click', () => {
+            document.body.style.backgroundColor = '#dcfce7';
+            logEvent('Đã chuyển sang màu xanh lá');
+        });
+
+        btnRed.addEventListener('click', () => {
+            document.body.style.backgroundColor = '#fee2e2';
+            logEvent('Đã chuyển sang màu đỏ');
+        });
+
+        // ===== BÀI 2: BỘ ĐẾM =====
+        let count = 0;
+        const counterEl = document.getElementById('counter');
+
+        document.getElementById('btn-increase').addEventListener('click', () => {
+            count++;
+            counterEl.textContent = count;
+            counterEl.style.color = count > 0 ? '#22c55e' : '#1e293b';
+            logEvent(`Tăng: ${count}`);
+        });
+
+        document.getElementById('btn-decrease').addEventListener('click', () => {
+            count--;
+            counterEl.textContent = count;
+            counterEl.style.color = count < 0 ? '#ef4444' : '#1e293b';
+            logEvent(`Giảm: ${count}`);
+        });
+
+        document.getElementById('btn-reset').addEventListener('click', () => {
+            count = 0;
+            counterEl.textContent = count;
+            counterEl.style.color = '#1e293b';
+            logEvent('Reset về 0');
+        });
+
+        // ===== BÀI 3: NHẬT KÝ =====
+        const output = document.getElementById('output');
+
+        function logEvent(message) {
+            const time = new Date().toLocaleTimeString('vi-VN');
+            output.innerHTML = `<div>[${time}] ${message}</div>` + output.innerHTML;
+        }
+    </script>
+</body>
+</html>
