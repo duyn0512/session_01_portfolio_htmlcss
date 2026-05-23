@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Danh sách sinh viên</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; padding: 2rem; background: #f1f5f9; }
+        .student-card {
+            background: white;
+            padding: 1rem;
+            margin-bottom: 0.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #3b82f6;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .student-card.top { border-left-color: #22c55e; background: #f0fdf4; }
+        .student-card.warning { border-left-color: #f59e0b; background: #fffbeb; }
+        .student-card.fail { border-left-color: #ef4444; background: #fef2f2; }
+        .badge {
+            padding: 0.2rem 0.6rem;
+            border-radius: 999px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        .badge-green { background: #dcfce7; color: #166534; }
+        .badge-yellow { background: #fef3c7; color: #92400e; }
+        .badge-red { background: #fee2e2; color: #991b1b; }
+        #controls { margin-bottom: 1rem; }
+        button {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            margin-right: 0.5rem;
+        }
+        .btn-primary { background: #3b82f6; color: white; }
+        .btn-warning { background: #f59e0b; color: white; }
+        .btn-danger { background: #ef4444; color: white; }
+    </style>
+</head>
+<body>
+    <h1>🎓 Danh sách sinh viên</h1>
+
+    <div id="controls">
+        <button class="btn-primary" id="btn-highlight">Đánh dấu giỏi</button>
+        <button class="btn-warning" id="btn-sort">Sắp xếp theo điểm</button>
+        <button class="btn-danger" id="btn-reset">Reset</button>
+    </div>
+
+    <div id="student-list"></div>
+
+    <script>
+        // ===== DATA =====
+        const students = [
+            { ten: "Nguyễn Văn An",    diem: 9.2 },
+            { ten: "Trần Thị Bình",    diem: 7.5 },
+            { ten: "Lê Hoàng Dũng",    diem: 4.8 },
+            { ten: "Phạm Thị Em",      diem: 8.1 },
+            { ten: "Hoàng Văn Phúc",   diem: 6.3 },
+            { ten: "Đỗ Thị Giang",     diem: 3.5 },
+        ];
+
+        const studentList = document.getElementById('student-list');
+
+        // ===== RENDER FUNCTION =====
+        function renderStudents(data) {
+            studentList.innerHTML = ''; // Xóa cũ
+
+            data.forEach((sv, index) => {
+                // Tạo card
+                const card = document.createElement('div');
+                card.classList.add('student-card');
+
+                // Xếp loại
+                let xepLoai, badgeClass;
+                if (sv.diem >= 8) {
+                    xepLoai = "Giỏi";
+                    badgeClass = "badge-green";
+                } else if (sv.diem >= 5) {
+                    xepLoai = "Đạt";
+                    badgeClass = "badge-yellow";
+                } else {
+                    xepLoai = "Yếu";
+                    badgeClass = "badge-red";
+                    card.classList.add('fail');
+                }
+
+                // InnerHTML
+                card.innerHTML = `
+                    <div>
+                        <strong>${sv.ten}</strong>
+                        <span style="color:#64748b; margin-left:0.5rem">— ${sv.diem} điểm</span>
+                    </div>
+                    <span class="badge ${badgeClass}">${xepLoai}</span>
+                `;
+
+                studentList.appendChild(card);
+            });
+        }
+
+        // ===== NÚT "ĐÁNH DẤU GIỎI" =====
+        document.getElementById('btn-highlight').addEventListener('click', () => {
+            const cards = studentList.querySelectorAll('.student-card');
+            cards.forEach((card, index) => {
+                if (students[index].diem >= 8) {
+                    card.classList.add('top');
+                }
+            });
+        });
+
+        // ===== NÚT "SẮP XẾP" =====
+        document.getElementById('btn-sort').addEventListener('click', () => {
+            const sorted = [...students].sort((a, b) => b.diem - a.diem);
+            renderStudents(sorted);
+        });
+
+        // ===== NÚT "RESET" =====
+        document.getElementById('btn-reset').addEventListener('click', () => {
+            renderStudents(students);
+        });
+
+        // ===== RENDER LẦN ĐẦU =====
+        renderStudents(students);
+    </script>
+</body>
+</html>
