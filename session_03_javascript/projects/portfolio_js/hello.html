@@ -264,6 +264,56 @@
 
         console.log("Có Phở không?", monAn.includes("Phở"));
 
+        /*Bài 0.8 - Kiểu dữ liệu Object*/
+        console.log("BÀI 0.8: KIỂU DỮ LIỆU OBJECT");
+
+        let sinhVien = {
+            hoTen: "Nguyễn Văn Minh",
+            tuoi: 20,
+            mssv: "20240001",
+            diem: [8, 7.5, 9],
+            laSinhVien: true
+        };
+
+        console.log(sinhVien.hoTen);        
+        console.log(sinhVien["tuoi"]);      
+        console.log(sinhVien.diem[0]);      
+        sinhVien.email = "minh@example.com";
+        sinhVien.tuoi = 21;                  
+        delete sinhVien.laSinhVien;          
+
+        for (let key in sinhVien) {
+            console.log(`${key}: ${sinhVien[key]}`);
+        }
+
+        console.log(Object.keys(sinhVien));   
+        console.log(Object.values(sinhVien)); 
+
+        /* 
+            Bài tập con 0.8 - Tạo hồ sơ cá nhân
+        */
+        console.log("\nBài tập con 0.8 - Tạo hồ sơ cá nhân\n\n")
+        let hoSo = {
+            hoTen: "Trần Thị Minh Duyên",
+            tuoi: 20,
+            nganh: "Kỹ thuật phần mềm",
+            soThich: ["Thiết kế UI/UX", "Đọc sách", "Nghe nhạc"],
+            diaChi: {
+                tinh: "Hà Nội",
+                quan: "Thanh Xuân",
+                duong: "Phan Đình Giót"
+            }
+        };
+
+        console.log(`Tôi là ${hoSo.hoTen}, ${hoSo.tuoi} tuổi, học ngành ${hoSo.nganh}`);
+
+        console.log(`Sở thích đầu tiên: ${hoSo.soThich[0]}`);
+
+        console.log(`Địa chỉ đầy đủ: Lớp 66KTPM1, Số ${hoSo.diaChi.duong}, Quận ${hoSo.diaChi.quan}, ${hoSo.diaChi.tinh}`);
+
+        hoSo.email = "dyn05122006@gmail.com";
+        console.log("Hồ sơ sau khi thêm email:", hoSo);
+
     </script> 
 
 </body>
