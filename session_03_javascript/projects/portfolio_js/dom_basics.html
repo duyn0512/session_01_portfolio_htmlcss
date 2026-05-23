@@ -139,6 +139,57 @@
 
         document.title = "DOM Practice";
         console.log("Title mới:", document.title);
+
+        /*Bài 0B.5 - classLisst - Quản lý CSS class*/
+        console.log("\n BÀI 0B.5: classLisst - Quản lý CSS class\n\n");
+
+        title.classList.add('highlight');
+        console.log(title.className); 
+
+        title.classList.remove('highlight');
+
+        title.classList.toggle('highlight'); 
+        title.classList.toggle('highlight'); 
+
+        console.log(title.classList.contains('highlight')); 
+
+        title.classList.replace('main-title', 'sub-title');
+
+        title.classList.add('bold', 'text-red');
+        
+        /*Bài tập con 0B.5 - Bật/Tắt highlight*/
+        console.log("\n Bài tập con 0B.5 - classList - Quản lý CSS class");
+
+        allLi.forEach((item) => {
+            item.classList.add('highlight');
+        });
+
+        console.log("Đã thêm class highlight");
+
+        const FirstLi = allLi[0];
+
+        console.log(
+            "Li đầu tiên có highlight không:",
+            FirstLi.classList.contains('highlight')
+        );
+
+        const secondLi = allLi[1];
+
+        secondLi.classList.toggle('text-red');
+
+        console.log("Đã toggle text-red cho li thứ hai");
+
+        allLi.forEach((item) => {
+            item.classList.remove('highlight');
+        });
+
+        console.log("Đã xóa highlight khỏi tất cả li");
+
+        allLi.forEach((item, index) => {
+            console.log(`Li ${index}:`, item.className);
+        });
+        
+
     </script>
 </body>
 </html>
