@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Tip Calculator</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+        }
+        .calculator {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            width: 400px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        h1 { text-align: center; margin-bottom: 1.5rem; font-size: 1.5rem; }
+        label { font-weight: 600; display: block; margin-bottom: 0.3rem; color: #334155; }
+        input, select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            box-sizing: border-box;
+        }
+        input:focus, select:focus { border-color: #6366f1; outline: none; }
+        .tip-buttons {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        .tip-btn {
+            flex: 1;
+            padding: 0.75rem;
+            border: 2px solid #e2e8f0;
+            background: white;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+        .tip-btn.active {
+            background: #6366f1;
+            border-color: #6366f1;
+            color: white;
+        }
+        .result {
+            background: #f0fdf4;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-top: 1rem;
+        }
+        .result-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+        .result-row.total {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #166534;
+            border-top: 2px solid #bbf7d0;
+            padding-top: 0.75rem;
+            margin-top: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <h1>💰 Tip Calculator</h1>
+
+        <label>Hóa đơn (VNĐ):</label>
+        <input type="number" id="bill" placeholder="VD: 500000" min="0">
+
+        <label>Phần trăm tip:</label>
+        <div class="tip-buttons">
+            <button class="tip-btn" data-tip="10">10%</button>
+            <button class="tip-btn active" data-tip="15">15%</button>
+            <button class="tip-btn" data-tip="20">20%</button>
+            <button class="tip-btn" data-tip="25">25%</button>
+        </div>
+
+        <label>Số người chia:</label>
+        <input type="number" id="people" value="1" min="1" max="20">
+
+        <div class="result">
+            <div class="result-row">
+                <span>Tiền tip:</span>
+                <span id="tip-amount">0 ₫</span>
+            </div>
+            <div class="result-row">
+                <span>Tổng cộng:</span>
+                <span id="total-amount">0 ₫</span>
+            </div>
+            <div class="result-row total">
+                <span>Mỗi người:</span>
+                <span id="per-person">0 ₫</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let tipPercent = 15;
+
+        const billInput = document.getElementById('bill');
+        const peopleInput = document.getElementById('people');
+        const tipAmountEl = document.getElementById('tip-amount');
+        const totalAmountEl = document.getElementById('total-amount');
+        const perPersonEl = document.getElementById('per-person');
+
+        function formatMoney(amount) {
+            return new Intl.NumberFormat('vi-VN').format(Math.round(amount)) + ' ₫';
+        }
+
+        function calculate() {
+            const bill = parseFloat(billInput.value) || 0;
+            const people = parseInt(peopleInput.value) || 1;
+
+            const tip = bill * (tipPercent / 100);
+            const total = bill + tip;
+            const perPerson = total / people;
+
+            tipAmountEl.textContent = formatMoney(tip);
+            totalAmountEl.textContent = formatMoney(total);
+            perPersonEl.textContent = formatMoney(perPerson);
+        }
+
+        // Tip buttons
+        document.querySelectorAll('.tip-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.tip-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                tipPercent = parseInt(btn.dataset.tip);
+                calculate();
+            });
+        });
+
+        // Input events
+        billInput.addEventListener('input', calculate);
+        peopleInput.addEventListener('input', calculate);
+
+        calculate(); // Tính lần đầu
+    </script>
+</body>
+</html>
