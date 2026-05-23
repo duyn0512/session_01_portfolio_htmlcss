@@ -41,7 +41,7 @@
     <h1>🖱️ Click Events</h1>
 
     /*
-        Bài 0C.1 - Click Event cơ bản
+        BÀI 0C.1 - CLICK EVENT CƠ BẢN
     */
     <!-- Phần 1: Đổi màu nền -->
     <h2>Bài 1: Đổi màu nền</h2>
@@ -116,7 +116,7 @@
     </script>
 
     /*
-        Bài 0C.2 - Input Event
+        BÀI 0C.2 - INPUT EVENT
     */
     <h2>Bài 4: Tìm kiếm realtime</h2>
     <input
@@ -182,7 +182,7 @@
     </script>
 
     /*
-        Bài 0C.3 - Keyboard Event
+        BÀI 0C.3 - KEYBOARD  EVENT
     */
     <h2>Bài 7: Phím tắt</h2>
     <p>Nhấn phím bất kỳ để xem thông tin:</p>
@@ -271,7 +271,7 @@
     </script>
 
     /*
-        Bài 0C.4 - Form Event
+        BÀI 0C.4 - FORM EVENT
     */
     <h2>Bài 9: Form đăng ký</h2>
     <form id="register-form" style="max-width:400px;">
@@ -345,5 +345,61 @@
             `;
         }
     </script>
+
+    /*
+        BÀI 0C.5 - EVENT DELEGATION
+    */
+    <h2>Bài 10: Event Delegation</h2>
+    <p>Click vào bất kỳ mục nào trong danh sách:</p>
+    <ul id="delegation-list" style="list-style:none; padding:0;">
+        <li data-action="edit" style="padding:0.75rem; margin:0.5rem 0; background:#dbeafe; border-radius:8px; cursor:pointer;">
+            ✏️ Sửa thông tin cá nhân
+        </li>
+        <li data-action="password" style="padding:0.75rem; margin:0.5rem 0; background:#dcfce7; border-radius:8px; cursor:pointer;">
+            🔒 Đổi mật khẩu
+        </li>
+        <li data-action="avatar" style="padding:0.75rem; margin:0.5rem 0; background:#fef3c7; border-radius:8px; cursor:pointer;">
+            📷 Đổi ảnh đại diện
+        </li>
+        <li data-action="delete" style="padding:0.75rem; margin:0.5rem 0; background:#fee2e2; border-radius:8px; cursor:pointer;">
+            🗑️ Xóa tài khoản
+        </li>
+    </ul>
+    <div id="delegation-output" style="margin-top:1rem; padding:1rem; background:#f1f5f9; border-radius:8px;"></div>
+
+    <script>
+        // ===== BÀI 10: EVENT DELEGATION =====
+        // Thay vì gắn listener cho TỪNG <li>, ta gắn 1 listener cho <ul>
+
+        const list = document.getElementById('delegation-list');
+        const delegationOutput = document.getElementById('delegation-output');
+
+        list.addEventListener('click', (e) => {
+            // e.target = phần tử được click trực tiếp
+            // closest('li') = tìm phần tử <li> gần nhất (kể từ e.target)
+
+            const li = e.target.closest('li');
+            if (!li) return; // Click vào vùng trống → bỏ qua
+
+            const action = li.dataset.action;
+
+            const messages = {
+                edit:     '✏️ Bạn chọn: Sửa thông tin cá nhân',
+                password: '🔒 Bạn chọn: Đổi mật khẩu',
+                avatar:   '📷 Bạn chọn: Đổi ảnh đại diện',
+                delete:   '🗑️ Bạn chọn: Xóa tài khoản'
+            };
+
+            delegationOutput.innerHTML = `<strong>${messages[action] || 'Không xác định'}</strong>`;
+
+            // Highlight mục được chọn
+            list.querySelectorAll('li').forEach(item => {
+                item.style.outline = 'none';
+            });
+            li.style.outline = '3px solid #3b82f6';
+        });
+    </script>
+
+    
 </body>
 </html>
