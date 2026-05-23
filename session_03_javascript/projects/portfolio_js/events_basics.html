@@ -111,5 +111,69 @@
             output.innerHTML = `<div>[${time}] ${message}</div>` + output.innerHTML;
         }
     </script>
+
+    <h2>Bài 4: Tìm kiếm realtime</h2>
+    <input
+        type="text"
+        id="search-input"
+        placeholder="Gõ để tìm kiếm..."
+        style="padding:0.75rem; width:300px; border:2px solid #e2e8f0; border-radius:8px; font-size:1rem;"
+    >
+    <p id="search-result" style="margin-top:0.5rem; color:#64748b;"></p>
+
+    <h2>Bài 5: Đếm ký tự</h2>
+    <textarea
+        id="message-input"
+        placeholder="Nhập tin nhắn..."
+        rows="3"
+        style="padding:0.75rem; width:100%; border:2px solid #e2e8f0; border-radius:8px; font-size:1rem; resize:vertical;"
+    ></textarea>
+    <p id="char-count" style="margin-top:0.25rem; color:#64748b;">0 / 200 ký tự</p>
+
+    <h2>Bài 6: Hiển thị giá trị realtime</h2>
+    <input
+        type="range"
+        id="range-input"
+        min="0"
+        max="100"
+        value="50"
+        style="width:300px;"
+    >
+    <span id="range-value" style="font-size:1.5rem; font-weight:700; margin-left:1rem;">50</span>
+
+    <script>
+        // ===== BÀI 5: ĐẾM KÝ TỰ =====
+        const messageInput = document.getElementById('message-input');
+        const charCount = document.getElementById('char-count');
+
+        messageInput.addEventListener('input', (e) => {
+            const length = e.target.value.length;
+            charCount.textContent = `${length} / 200 ký tự`;
+
+            if (length > 200) {
+                charCount.style.color = '#ef4444';
+                charCount.textContent += ' — Vượt quá giới hạn!';
+            } else if (length > 150) {
+                charCount.style.color = '#f59e0b';
+            } else {
+                charCount.style.color = '#64748b';
+            }
+        });
+
+        // ===== BÀI 6: RANGE SLIDER =====
+        const rangeInput = document.getElementById('range-input');
+        const rangeValue = document.getElementById('range-value');
+
+        rangeInput.addEventListener('input', (e) => {
+            rangeValue.textContent = e.target.value;
+
+            // Đổi màu theo giá trị
+            const val = parseInt(e.target.value);
+            if (val < 30) rangeValue.style.color = '#3b82f6';
+            else if (val < 70) rangeValue.style.color = '#22c55e';
+            else rangeValue.style.color = '#ef4444';
+        });
+    </script>
+
 </body>
 </html>
