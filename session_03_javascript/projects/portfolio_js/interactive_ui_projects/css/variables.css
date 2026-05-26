@@ -1,0 +1,21 @@
+/* ==========================================================================
+   FILE: variables.css
+   CHỨC NĂNG: Khai báo toàn bộ biến cấu hình (Màu sắc, Bo góc, Shadow)
+   ========================================================================== */
+
+:root {
+  /* Bảng màu chủ đạo (Tone màu Kem - Xanh lá - Cam đất) */
+  --cream: #f1ead9;
+  --cream-deep: #ebe2cc;
+  --ink: #1f2a24;
+  --green: #1f4a32;
+  --green-deep: #143524;
+  --muted: #5a6660;
+  --accent: #d97a4a;
+  --card-bg: #ffffff;
+  
+  /* Cấu hình hiệu ứng & định dạng khung */
+  --radius: 14px;
+  --shadow-sm: 0 2px 10px rgba(20, 30, 25, .06);
+  --shadow-md: 0 12px 32px rgba(20, 30, 25, .10);
+}
