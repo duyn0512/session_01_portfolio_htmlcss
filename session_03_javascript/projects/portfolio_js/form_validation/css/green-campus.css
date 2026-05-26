@@ -1,0 +1,71 @@
+.project-detail-section {
+  padding: 6rem 0;
+  background-color: #ffffff;
+}
+
+.project-large-title {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: clamp(2.3rem, 4vw, 3.5rem);
+  color: var(--green-deep);
+  line-height: 1.2;
+  margin-bottom: 2rem;
+}
+
+.project-description {
+  font-family: 'Inter', sans-serif;
+  color: var(--muted);
+  font-size: 1.05rem;
+  line-height: 1.8;
+}
+
+.project-main-img {
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.project-role-badge {
+  display: inline-block;
+  background-color: rgba(30, 50, 40, 0.06);
+  color: var(--green-deep);
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  font-weight: 500;
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.project-nav-wrapper {
+  padding: 3rem 0;
+  background-color: #ffffff;
+}
+
+.next-project-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  color: var(--green-deep);
+  transition: opacity 0.2s ease;
+}
+
+.next-project-link .next-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.next-project-link .next-arrow {
+  color: var(--green-deep);
+  transition: transform 0.2s ease;
+}
+
+.next-project-link:hover {
+  opacity: 0.75;
+}
+
+.next-project-link:hover .next-arrow {
+  transform: translateX(4px);
+}
