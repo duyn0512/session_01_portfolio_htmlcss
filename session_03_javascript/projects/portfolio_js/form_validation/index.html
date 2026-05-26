@@ -86,22 +86,66 @@
     
   </main>
   
-  <footer class="site-footer">
-    <div class="container">
-      <h2 class="contact-title">Contact me</h2>
-      
-      <a href="mailto:dyn05122006@gmail.com" class="contact-email">dyn05122006@gmail.com</a>
-      
-      <hr class="footer-divider" />
-      
-      <div class="footer-links">
-        <a href="index.html">Work</a>
-        <a href="about.html">About</a>
+  <section id="contact" class="py-5" style="background-color: #f5f0e1; color: #333;">
+  <div class="container py-4">
+    <h2 class="text-center contact-title fw-bold mb-5" style="color: #1e293b;">Contact me</h2>
+    
+    <div class="row g-5 align-items-stretch text-start">
+      <div class="col-12 col-md-5 d-flex flex-column justify-content-start">
+        <h3 class="fw-bold h4 mb-3" style="color: #1e293b;">Contact Information</h3>
+        <p class="text-muted mb-4">
+          I am a second-year Software Engineering student at the Faculty of Information Technology, Thuy Loi University. 
+          I am passionate about technology and programming...
+        </p>
+        
+        <div class="d-flex flex-column gap-3">
+          <div class="d-flex align-items-center gap-3">
+            <span class="fs-5">📧</span>
+            <a href="mailto:dyn05122006@gmail.com" class="contact-email text-decoration-none fw-medium">dyn05122006@gmail.com</a>
+          </div>
+          <div class="d-flex align-items-center gap-3">
+            <span class="fs-5">📍</span>
+            <span class="fw-medium text-secondary">Hanoi, Vietnam</span>
+          </div>
+        </div>
       </div>
-      
-      <p class="copyright-text">© 2025 T.T.M Duyen</p>
+
+      <div class="col-12 col-md-7">
+        <div class="bg-white p-4 p-lg-5 rounded-4 shadow-sm border border-0">
+          <form id="contact-form" class="contact-form" novalidate>
+            
+            <div class="form-group mb-4">
+              <label for="name" class="form-label fw-semibold small text-secondary">Full Name</label>
+              <input type="text" id="name" name="name" class="form-control py-2" required placeholder="Nhập họ và tên của bạn">
+              <span class="error-message" id="name-error"></span>
+            </div>
+
+            <div class="form-group mb-4">
+              <label for="email" class="form-label fw-semibold small text-secondary">Email Address</label>
+              <input type="email" id="email" name="email" class="form-control py-2" required placeholder="name@example.com">
+              <span class="error-message" id="email-error"></span>
+            </div>
+
+            <div class="form-group mb-4">
+              <label for="message" class="form-label fw-semibold small text-secondary">Message</label>
+              <textarea id="message" name="message" class="form-control" rows="4" required placeholder="Nhập nội dung lời nhắn..."></textarea>
+              <span class="error-message" id="message-error"></span>
+            </div>
+
+            <button type="submit" class="submit-btn w-100 btn text-white py-2.5 fw-semibold border-0" style="background-color: #1f4a32; border-radius: 8px;">
+              Send Message &rarr;
+            </button>
+          </form>
+
+          <div id="success-message" class="success-message text-center mt-3" hidden>
+            Message sent successfully!
+          </div>
+        </div>
+      </div>
     </div>
-  </footer>
+  </div>
+</section>
+
 
   <div id="lightbox" class="lightbox-overlay">
     <button class="lightbox-close">
@@ -127,5 +171,6 @@
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/portfolio-filter.js"></script>
   <script src="js/lightbox.js"></script>
+  <script src="js/form-validation.js"></script>
 </body>
 </html>
