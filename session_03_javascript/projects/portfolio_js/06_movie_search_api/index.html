@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎬 Movie Search</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app">
+        <!-- Header -->
+        <header class="app-header">
+            <h1>🎬 Movie Search</h1>
+            <p>Tìm kiếm phim yêu thích của bạn</p>
+        </header>
+
+        <!-- Search Box -->
+        <div class="search-wrapper">
+            <input
+                type="text"
+                id="search-input"
+                class="search-input"
+                placeholder="Nhập tên phim... (VD: Avengers, Spider-Man)"
+            >
+            <button id="search-btn" class="search-btn">🔍 Tìm kiếm</button>
+        </div>
+
+        <!-- Tabs: Search Results / Favorites -->
+        <div class="tabs">
+            <button class="tab-btn active" data-tab="search">🔍 Kết quả</button>
+            <button class="tab-btn" data-tab="favorites">❤️ Yêu thích (<span id="fav-count">0</span>)</button>
+        </div>
+
+        <!-- Status Messages -->
+        <div id="status-message" class="status-message" hidden></div>
+
+        <!-- Loading Spinner -->
+        <div id="loading" class="loading" hidden>
+            <div class="spinner"></div>
+            <p>Đang tìm kiếm...</p>
+        </div>
+
+        <!-- Movie Grid -->
+        <div id="movie-grid" class="movie-grid">
+            <!-- Cards rendered by JS -->
+        </div>
+
+        <!-- Pagination -->
+        <div id="pagination" class="pagination" hidden>
+            <button id="prev-page" class="page-btn">← Trang trước</button>
+            <span id="page-info" class="page-info">Trang 1 / 1</span>
+            <button id="next-page" class="page-btn">Trang sau →</button>
+        </div>
+    </div>
+
+    <!-- Movie Detail Modal -->
+    <div id="movie-modal" class="modal-overlay" hidden>
+        <div class="modal-content">
+            <button id="modal-close" class="modal-close">&times;</button>
+            <div class="modal-body">
+                <div class="modal-poster">
+                    <img id="modal-poster-img" src="" alt="">
+                </div>
+                <div class="modal-info">
+                    <h2 id="modal-title"></h2>
+                    <div class="modal-meta">
+                        <span id="modal-year" class="badge">📅 </span>
+                        <span id="modal-runtime" class="badge">⏱️ </span>
+                        <span id="modal-rated" class="badge">🔞 </span>
+                        <span id="modal-rating" class="badge">⭐ </span>
+                    </div>
+                    <p id="modal-genre" class="modal-genre"></p>
+                    <p id="modal-plot" class="modal-plot"></p>
+                    <div class="modal-details">
+                        <p><strong>Đạo diễn:</strong> <span id="modal-director"></span></p>
+                        <p><strong>Diễn viên:</strong> <span id="modal-actors"></span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
