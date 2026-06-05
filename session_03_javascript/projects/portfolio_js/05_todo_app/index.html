@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo App — Quản lý công việc</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="todo-container">
+        <!-- Header -->
+        <header class="todo-header">
+            <h1>📋 Công việc hôm nay</h1>
+            <p class="date" id="current-date"></p>
+        </header>
+
+        <!-- Input Section -->
+        <div class="todo-input-wrapper">
+            <input
+                type="text"
+                id="todo-input"
+                class="todo-input"
+                placeholder="Nhập công việc mới... (Enter để thêm)"
+                autofocus
+            >
+            <button id="add-btn" class="add-btn">+</button>
+        </div>
+
+        <!-- Filter Tabs -->
+        <div class="filter-tabs">
+            <button class="filter-btn active" data-filter="all">Tất cả</button>
+            <button class="filter-btn" data-filter="active">Chưa xong</button>
+            <button class="filter-btn" data-filter="completed">Hoàn thành</button>
+        </div>
+
+        <!-- Todo List -->
+        <ul id="todo-list" class="todo-list">
+            <!-- Todo items rendered by JS -->
+        </ul>
+
+        <!-- Empty State -->
+        <div id="empty-state" class="empty-state" hidden>
+            <span class="empty-icon">📝</span>
+            <p>Chưa có công việc nào. Thêm việc đầu tiên!</p>
+        </div>
+
+        <!-- Footer -->
+        <footer class="todo-footer">
+            <span id="todo-count">0 việc chưa hoàn thành</span>
+            <button id="clear-completed" class="clear-btn" hidden>Xóa已完成</button>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
