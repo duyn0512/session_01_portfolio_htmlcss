@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🛒 Tech Shop — Giỏ hàng</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <h1>🖥️ Tech Shop</h1>
+        <div class="nav-right">
+            <input type="text" id="search-input" placeholder="🔍 Tìm sản phẩm..." class="search-input">
+            <button id="cart-toggle" class="cart-toggle">
+                🛒 <span id="cart-badge" class="cart-badge" hidden>0</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Products Grid -->
+    <main class="container">
+        <h2>Sản phẩm nổi bật</h2>
+        <div id="product-grid" class="product-grid">
+            <!-- Products rendered by JS -->
+        </div>
+    </main>
+
+    <!-- Cart Sidebar -->
+    <div id="cart-overlay" class="cart-overlay" hidden></div>
+    <aside id="cart-sidebar" class="cart-sidebar">
+        <div class="cart-header">
+            <h2>🛒 Giỏ hàng (<span id="cart-count">0</span>)</h2>
+            <button id="cart-close" class="cart-close">&times;</button>
+        </div>
+
+        <div id="cart-items" class="cart-items">
+            <!-- Cart items rendered by JS -->
+        </div>
+
+        <div id="cart-empty" class="cart-empty">
+            <span>🛒</span>
+            <p>Giỏ hàng trống</p>
+            <small>Hãy thêm sản phẩm yêu thích!</small>
+        </div>
+
+        <div id="cart-summary" class="cart-summary">
+            <div class="summary-row">
+                <span>Tạm tính:</span>
+                <span id="subtotal">0₫</span>
+            </div>
+            <div class="summary-row">
+                <span>VAT (10%):</span>
+                <span id="vat">0₫</span>
+            </div>
+            <div class="summary-row total">
+                <span>Tổng cộng:</span>
+                <span id="total">0₫</span>
+            </div>
+            <button id="checkout-btn" class="checkout-btn">Thanh toán</button>
+        </div>
+    </aside>
+
+    <!-- Toast Container -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>
