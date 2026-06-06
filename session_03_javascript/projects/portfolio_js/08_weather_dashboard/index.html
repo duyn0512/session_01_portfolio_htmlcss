@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌤️ Weather Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="dashboard">
+        <!-- Header -->
+        <header class="header">
+            <h1>🌤️ Weather Dashboard</h1>
+            <div class="header-actions">
+                <button id="unit-toggle" class="unit-btn">°C</button>
+                <button id="geo-btn" class="geo-btn" title="Vị trí hiện tại">📍</button>
+            </div>
+        </header>
+
+        <!-- Search -->
+        <div class="search-bar">
+            <input
+                type="text"
+                id="city-input"
+                placeholder="Nhập tên thành phố... (VD: Hanoi, Tokyo)"
+            >
+            <button id="search-btn">🔍</button>
+        </div>
+
+        <!-- Search History -->
+        <div id="search-history" class="search-history" hidden>
+            <span class="history-label">Gần đây:</span>
+            <div id="history-tags" class="history-tags"></div>
+        </div>
+
+        <!-- Loading -->
+        <div id="loading" class="loading" hidden>
+            <div class="spinner"></div>
+            <p>Đang tải dữ liệu thời tiết...</p>
+        </div>
+
+        <!-- Error -->
+        <div id="error-message" class="error-message" hidden></div>
+
+        <!-- Main Weather Card -->
+        <div id="current-weather" class="current-weather" hidden>
+            <div class="weather-main">
+                <div class="weather-icon-wrapper">
+                    <img id="weather-icon" src="" alt="Weather icon">
+                    <span id="weather-description" class="weather-description"></span>
+                </div>
+                <div class="weather-temp">
+                    <span id="current-temp" class="temp-value"></span>
+                    <span id="feels-like" class="feels-like"></span>
+                </div>
+            </div>
+            <div class="weather-details">
+                <div class="detail-item">
+                    <span class="detail-icon">💧</span>
+                    <span class="detail-label">Độ ẩm</span>
+                    <span id="humidity" class="detail-value"></span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-icon">🌬️</span>
+                    <span class="detail-label">Gió</span>
+                    <span id="wind" class="detail-value"></span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-icon">🌡️</span>
+                    <span class="detail-label">Áp suất</span>
+                    <span id="pressure" class="detail-value"></span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-icon">🌅</span>
+                    <span class="detail-label">Bình minh</span>
+                    <span id="sunrise" class="detail-value"></span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-icon">🌇</span>
+                    <span class="detail-label">Hoàng hôn</span>
+                    <span id="sunset" class="detail-value"></span>
+                </div>
+            </div>
+            <div class="city-name">
+                <h2 id="city-title"></h2>
+                <span id="current-date"></span>
+            </div>
+        </div>
+
+        <!-- Forecast -->
+        <div id="forecast-section" class="forecast-section" hidden>
+            <h3>Dự báo 5 ngày</h3>
+            <div id="forecast-grid" class="forecast-grid">
+                <!-- Forecast cards rendered by JS -->
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
